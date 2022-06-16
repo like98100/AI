@@ -60,6 +60,7 @@ mp_drawing = mp.solutions.drawing_utils         # 얼굴의 특징을 그리기 
 
 video = cv2.VideoCapture('video.mp4')
 
+
 image_left_ear = cv2.imread('Left Ear.png', cv2.IMREAD_UNCHANGED)
 image_right_ear = cv2.imread('Right Ear.png', cv2.IMREAD_UNCHANGED)
 image_nose = cv2.imread('Nose.png', cv2.IMREAD_UNCHANGED)
@@ -67,7 +68,7 @@ image_nose = cv2.imread('Nose.png', cv2.IMREAD_UNCHANGED)
 image_troll = cv2.imread('Troll face.png', cv2.IMREAD_UNCHANGED)
 
 #   model_selection = 0 : 카메라 기준 근거리, 1 : 원거리  min_detection_confidence = 정확도가 float%면 얼굴로 확인
-with mp_face_detection.FaceDetection(model_selection = 0, min_detection_confidence = 0.7) as face_detection:
+with mp_face_detection.FaceDetection(model_selection = 1, min_detection_confidence = 0.6) as face_detection:
     while video.isOpened():
         success, image = video.read()
         if not success:
@@ -83,7 +84,7 @@ with mp_face_detection.FaceDetection(model_selection = 0, min_detection_confiden
         if results.detections:                              # 검출된 얼굴이 있으면
             # 구분 특징 : 오른쪽/왼쪽 눈, 코 끝부분, 입 중심, 오른쪽/왼쪽 귀
             for detection in results.detections:            # 있는 얼굴만큼
-#                mp_drawing.draw_detection(image, detection) # 도형출력
+#                mp_drawing.draw_detection(image, detection) # 도형 출력
                 print(detection)
 
                 #특정 위치 가져오기
