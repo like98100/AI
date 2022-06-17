@@ -101,6 +101,8 @@ with mp_face_detection.FaceDetection(model_selection = 0, min_detection_confiden
 
                 h, w, _ = image.shape # height, width, channel
 
+                # video 1
+
                 # 돼지코
                 right_ear = (int(right_ear.x * w) - 200, int(right_ear.y * h) - 175) # 이미지 내 실제 좌표
                 left_ear = (int(left_ear.x * w) + 200, int(left_ear.y * h) - 175)
@@ -114,6 +116,12 @@ with mp_face_detection.FaceDetection(model_selection = 0, min_detection_confiden
                 # 트롤 페이스
                 # nose_tip = (int(nose_tip.x * w), int(nose_tip.y * h) - 75)
 
+
+                # video 2 소형 돼지코
+                # right_ear = (int(right_ear.x * w) - 75, int(right_ear.y * h) + 25)  # 이미지 내 실제 좌표
+                # left_ear = (int(left_ear.x * w) - 15, int(left_ear.y * h) + 25)
+                # nose_tip = (int(nose_tip.x * w) - 40, int(nose_tip.y * h) + 55)
+
                 # Overlay(image, x,y,h,w,overlay_image)
 
                 # 돼지코
@@ -121,13 +129,15 @@ with mp_face_detection.FaceDetection(model_selection = 0, min_detection_confiden
                 overlay(image, *left_ear, 225, 225, image_left_ear)
                 overlay(image, *nose_tip, 225, 225, image_nose)
 
+                # 트롤 페이스
+                # overlay(image, *nose_tip, 625, 500, image_troll)
+
                 # 소형 버전 돼지코
                 # overlay(image, *right_ear, 50, 50, image_right_ear2)
                 # overlay(image, *left_ear, 50, 50, image_left_ear2)
                 # overlay(image, *nose_tip, 150, 50, image_nose2)
 
-                # 트롤 페이스
-                # overlay(image, *nose_tip, 625, 500, image_troll)
+
 
         cv2.imshow('Face Detection', cv2.resize(image, None, fx = 0.3, fy = 0.3))
 
